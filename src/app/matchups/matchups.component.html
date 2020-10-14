@@ -1,0 +1,33 @@
+<app-navigation-bar></app-navigation-bar>
+<div>
+    <table class="teamTable" >
+        <div *ngFor="let result of matchResults">
+            <tr (click)="expandMatch(matchResults.indexOf(result))" >
+                    <td>{{result[0].teamName}}</td>
+                    <td class="rightJust">{{result[0].totalScore}}</td>
+                    <td>{{result[1].totalScore}}</td>
+                    <td class="rightJust">{{result[1].teamName}}</td>
+            </tr>
+
+            <tr>
+                <td *ngIf="matchResults.indexOf(result)===expandedMatch" colspan="2">
+                    <table>
+                        <tr *ngFor="let player of result[0].performance"> 
+                            <td>{{player.playerName}}</td>
+                            <td class="rightJust">{{player.score}}</td>
+                        </tr>
+                    </table>
+                </td>
+                <td *ngIf="matchResults.indexOf(result)===expandedMatch" colspan="2">
+                    <table>
+                        <tr *ngFor="let player of result[1].performance"> 
+                            <td>{{player.score}}</td>
+                            <td class="rightJust">{{player.playerName}}</td>
+                        </tr>
+                    </table>
+                </td> 
+            </tr>
+        </div>
+    </table>
+    
+</div>
