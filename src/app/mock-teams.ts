@@ -44,7 +44,7 @@ const mockTeamWeekResult1: TeamWeekResult = {
     teamID: 1,
     teamName: 'LCS Raiders',
     weekID: 1,
-    totalScore: 50,
+    totalScore: 0,
     performance: [mockPlayerPerformance1, mockPlayerPerformance2, mockPlayerPerformance3, mockPlayerPerformance4, mockPlayerPerformance5]
 }
 
@@ -55,7 +55,7 @@ const mockTeamWeekResult2: TeamWeekResult = {
     teamID: 2,
     teamName: 'LCS Warriors',
     weekID: 1,
-    totalScore: 49,
+    totalScore: 0,
     performance: [mockPlayerPerformance1, mockPlayerPerformance2, mockPlayerPerformance3, mockPlayerPerformance4, mockPlayerPerformance5]
 }
 
@@ -66,7 +66,7 @@ const mockTeamWeekResult3: TeamWeekResult = {
     teamID: 3,
     teamName: 'LCS Mustangs',
     weekID: 1,
-    totalScore: 100,
+    totalScore: 0,
     performance: [mockPlayerPerformance1, mockPlayerPerformance2, mockPlayerPerformance3, mockPlayerPerformance4, mockPlayerPerformance5]
 }
 
@@ -77,7 +77,7 @@ const mockTeamWeekResult4: TeamWeekResult = {
     teamID: 4,
     teamName: 'LCS Berserkers',
     weekID: 1,
-    totalScore: 99,
+    totalScore: 0,
     performance: [mockPlayerPerformance1, mockPlayerPerformance2, mockPlayerPerformance3, mockPlayerPerformance4, mockPlayerPerformance5]
 }
 
