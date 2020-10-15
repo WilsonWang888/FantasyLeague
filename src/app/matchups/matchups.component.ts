@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TeamWeekResult } from '../team-week-result'
 import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component'
-import { mockWeekPerformance, mockMatchupsList } from '../mock-teams'
+import { MatchupService } from '../matchup.service'
 
 @Component({
   selector: 'app-matchups',
@@ -14,11 +14,11 @@ export class MatchupsComponent implements OnInit {
   matchResults: TeamWeekResult[][];
   expandedMatch: number;
 
-  constructor() { }
+  constructor(private matchupService: MatchupService) { }
 
   ngOnInit(): void {
-    this.matchupsList = mockMatchupsList;
-    this.matchData = mockWeekPerformance;
+    this.matchupService.getMatchupsList().subscribe(matchupsList => this.matchupsList = matchupsList);
+    this.matchupService.getMatchupData().subscribe(matchData => this.matchData = matchData);
     this.matchResults = [];
     for(var i: number = 0; i < this.matchupsList.length; i++) {
       this.matchResults[i] = [];
