@@ -88,7 +88,12 @@ export class InMemoryDataService implements InMemoryDbService{
       performance: [mockPlayerPerformance1, mockPlayerPerformance2, mockPlayerPerformance3, mockPlayerPerformance4, mockPlayerPerformance5]
   }
   const mockWeekPerformance: TeamWeekResult[] = [mockTeamWeekResult1, mockTeamWeekResult2, mockTeamWeekResult3, mockTeamWeekResult4];
-    return {mockWeekPerformance};
+  const mockMatchupsList: number[][] = [[1,2], [3,4]]
+
+    return {
+        performances: mockWeekPerformance,
+        matchups: mockMatchupsList 
+    };
   }
   
 }
