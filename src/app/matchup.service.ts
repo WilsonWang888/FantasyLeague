@@ -1,26 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { mockWeekPerformance, mockMatchupsList } from './mock-teams';
 import { TeamWeekResult } from './team-week-result';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MatchupService {
 
-  private matchupResultURL = 'api/mockWeekPerformance'
+  private matchupResultURL = 'api/performances';
+  private matchupListURL = 'api/matchups';
 
   constructor(private http: HttpClient) { }
 
   getMatchupsList(): Observable<number[][]>{
-    return of(mockMatchupsList);
+    return this.http.get<number[][]>(this.matchupListURL);
   }
-
-  // getMatchupData(): Observable<TeamWeekResult[]>{
-  //   console.log(of(mockWeekPerformance))
-  //   return of(mockWeekPerformance);
-  // }
 
   getMatchupData(): Observable<TeamWeekResult[]>{
     return this.http.get<TeamWeekResult[]>(this.matchupResultURL);

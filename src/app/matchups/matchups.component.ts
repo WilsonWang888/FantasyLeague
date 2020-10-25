@@ -22,7 +22,7 @@ export class MatchupsComponent implements OnInit {
       this.matchupsList = matchupsList;
       this.setupData();
     });
-    this.matchupService.getMatchupData().subscribe(matchData => {
+      this.matchupService.getMatchupData().subscribe(matchData => {
       this.matchData = matchData;
       this.setupData();
     });
