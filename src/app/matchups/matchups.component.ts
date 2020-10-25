@@ -13,22 +13,37 @@ export class MatchupsComponent implements OnInit {
   matchData: TeamWeekResult[];
   matchResults: TeamWeekResult[][];
   expandedMatch: number;
+  datainitialized: boolean = false;
 
   constructor(private matchupService: MatchupService) { }
 
   ngOnInit(): void {
-    this.matchupService.getMatchupsList().subscribe(matchupsList => this.matchupsList = matchupsList);
-    this.matchupService.getMatchupData().subscribe(matchData => this.matchData = matchData);
-    this.matchResults = [];
-    for(var i: number = 0; i < this.matchupsList.length; i++) {
-      this.matchResults[i] = [];
-      for(var j: number = 0; j< 10; j++) {
-          this.matchResults[i][j] = new TeamWeekResult();
+    this.matchupService.getMatchupsList().subscribe(matchupsList => {
+      this.matchupsList = matchupsList;
+      this.setupData();
+    });
+    this.matchupService.getMatchupData().subscribe(matchData => {
+      this.matchData = matchData;
+      this.setupData();
+    });
+   
+  }
+
+  setupData(): void {
+    if(!this.datainitialized){
+      this.datainitialized = true;
+    } else {
+      this.matchResults = [];
+      for(var i: number = 0; i < this.matchupsList.length; i++) {
+        this.matchResults[i] = [];
+        for(var j: number = 0; j< 10; j++) {
+            this.matchResults[i][j] = new TeamWeekResult();
       }
+      }
+      this.calculateTotalScores();
+      this.sortMatches();
+      this.expandMatch(0);
     }
-    this.calculateTotalScores();
-    this.sortMatches();
-    this.expandMatch(0);
   }
 
   sortMatches(): void {
