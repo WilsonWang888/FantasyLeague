@@ -1,0 +1,25 @@
+<app-navigation-bar></app-navigation-bar>
+
+<mat-grid-list cols="3">
+    <mat-grid-tile>
+        <app-trade-list [teamID]="1" (selected)="onSelectPlayer($event, 1)"></app-trade-list>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-grid-list cols="1">
+            <div>
+                <span>Leaving Player</span><br>
+                <span *ngIf="leavingPlayer">{{leavingPlayer.name}}</span> <br><br>
+            </div>
+            <div>
+                <button mat-raised-button color="primary" (click)="submitTrade()">Trade</button><br><br>
+            </div>
+            <div>
+                <span>Incoming Player</span><br>
+                <span *ngIf="incomingPlayer">{{incomingPlayer.name}}</span>
+            </div>
+        </mat-grid-list>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <app-trade-list [teamID]="0" (selected)="onSelectPlayer($event, 0)"></app-trade-list>
+    </mat-grid-tile>
+</mat-grid-list>
